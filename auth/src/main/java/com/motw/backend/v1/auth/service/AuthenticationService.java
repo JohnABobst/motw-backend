@@ -63,6 +63,4 @@ public class AuthenticationService {
             throw new Exception("Unable to retrieve user");
         }
     }
-
-    public JwtAuthenticationResponse validate()
 }
