@@ -22,6 +22,8 @@
 	<modules>
 		<!-- Add the auth microservice module here -->
 		<module>auth</module>
+		<module>eureka</module>
+		<module>keeper</module>
 	</modules>
 
 	<dependencies>

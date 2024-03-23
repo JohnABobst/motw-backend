@@ -53,9 +53,4 @@ public class AuthController {
         // Perform logout operation (if any)
         return ResponseEntity.ok("Logged out successfully");
     }
-
-    @GetMapping("/validate")
-    public JwtAuthenticationResponse validateJwt() {
-        return ;
-    }
 }
