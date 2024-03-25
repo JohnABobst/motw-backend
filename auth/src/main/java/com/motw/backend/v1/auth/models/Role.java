@@ -1,4 +1,4 @@
-package com.motw.backend.v1.auth.model;
+package com.motw.backend.v1.auth.models;
 
 public enum Role {
 

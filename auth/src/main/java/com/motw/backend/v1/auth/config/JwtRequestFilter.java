@@ -1,6 +1,6 @@
 package com.motw.backend.v1.auth.config;
 
-import com.motw.backend.v1.auth.service.UserService;
+import com.motw.backend.v1.auth.services.UserService;
 import com.motw.backend.v1.auth.utils.JwTokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,10 +1,9 @@
-package com.motw.backend.v1.auth.repository;
+package com.motw.backend.v1.auth.repositories;
 
-import com.motw.backend.v1.auth.model.User;
+import com.motw.backend.v1.auth.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 // UserRepository.java

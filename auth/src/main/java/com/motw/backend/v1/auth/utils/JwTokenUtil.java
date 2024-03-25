@@ -65,6 +65,10 @@ public class JwTokenUtil implements Serializable {
         return (userName.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
+    public Boolean validateToken(String token) {
+        return isTokenExpired(token);
+    }
+
     private Key getSecretKey() {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
         return Keys.hmacShaKeyFor(keyBytes);
