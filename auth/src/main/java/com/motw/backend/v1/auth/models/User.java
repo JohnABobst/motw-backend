@@ -30,7 +30,7 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
-    LocalDateTime createAt;
+    LocalDateTime createdAt;
 
     LocalDateTime updatedAt;
 
