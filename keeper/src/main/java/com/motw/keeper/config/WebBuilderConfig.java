@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class WebBuilderConfig {
-//    WebBuilder is asynchronous, you can put .block() at the end of the chain to make it wait for the response
+    //    WebBuilder is asynchronous, you can put .block() at the end of the chain to make it wait for the response
     @Bean
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder();

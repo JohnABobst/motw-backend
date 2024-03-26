@@ -1,4 +1,4 @@
-package com.motw.backend.v1.auth.dto;
+package com.motw.keeper.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class JwtValidateRequest {
-    boolean valid;
+public class PlayerInput {
+    String input;
 }
