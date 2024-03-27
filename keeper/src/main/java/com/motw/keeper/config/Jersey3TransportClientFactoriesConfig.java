@@ -11,5 +11,4 @@ public class Jersey3TransportClientFactoriesConfig {
     public Jersey3TransportClientFactories jersey3TransportClientFactories() {
         return new Jersey3TransportClientFactories();
     }
-
 }

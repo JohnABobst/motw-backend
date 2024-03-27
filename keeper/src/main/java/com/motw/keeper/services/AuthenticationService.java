@@ -27,6 +27,7 @@ public class AuthenticationService {
     private WebClient.Builder webClientBuilder;
 
     public ResponseEntity<?> validateToken(String authorizationHeader) {
+        System.out.println(authorizationHeader);
 
         return webClientBuilder.build()
                 .get()
