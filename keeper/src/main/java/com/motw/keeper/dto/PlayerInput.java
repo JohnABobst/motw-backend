@@ -1,4 +1,4 @@
-package com.motw.backend.v1.auth.dto;
+package com.motw.keeper.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignUpRequest {
-    String username;
-    String email;
-    String password;
+public class PlayerInput {
+    String input;
 }

@@ -1,4 +1,4 @@
-package com.motw.backend.v1.auth.model;
+package com.motw.backend.v1.auth.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,6 +14,8 @@ import java.util.List;
 @Builder
 @Entity
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
 
@@ -28,7 +30,7 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
-    LocalDateTime createAt;
+    LocalDateTime createdAt;
 
     LocalDateTime updatedAt;
 
