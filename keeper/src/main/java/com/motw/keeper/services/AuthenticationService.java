@@ -1,10 +1,7 @@
 package com.motw.keeper.services;
 
-import com.netflix.discovery.converters.Auto;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -14,10 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.function.Predicate;
 
 @Service
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthenticationService {
 
     @Value("${token.validation.url}")

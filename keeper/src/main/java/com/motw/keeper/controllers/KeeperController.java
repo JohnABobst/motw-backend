@@ -18,7 +18,6 @@ public class KeeperController {
     @AuthenticateRequest
     @PostMapping("/player-input")
     public KeeperResponse processPlayerInput(@RequestBody PlayerInput playerInput ) {
-//        logic to make a call to the chatbot
         return new KeeperResponse(String.format("%s, was a good response", playerInput.getInput()));
     }
 }
