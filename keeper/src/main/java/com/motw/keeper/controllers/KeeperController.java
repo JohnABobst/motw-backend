@@ -1,23 +1,27 @@
 package com.motw.keeper.controllers;
 
-import com.motw.keeper.annotations.AuthenticateRequest;
-import com.motw.keeper.dto.KeeperResponse;
-import com.motw.keeper.dto.PlayerInput;
-import com.motw.keeper.services.AuthenticationService;
+import com.motw.keeper.dto.OpenAIResponse;
+import com.motw.keeper.services.OpenAIService;
+import com.motw.keeper.services.exceptions.OpenAIException;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.stereotype.Controller;
 
-@RestController()
-@RequestMapping("/api/v1")
+@Controller
 @RequiredArgsConstructor
 public class KeeperController {
 
-    @AuthenticateRequest
-    @PostMapping("/player-input")
-    public KeeperResponse processPlayerInput(@RequestBody PlayerInput playerInput ) {
-        return new KeeperResponse(String.format("%s, was a good response", playerInput.getInput()));
+    @Autowired
+    private final OpenAIService openAIService;
+
+    @MessageMapping("/game/{gameId}")
+    @SendTo("/topic/game/{gameId}")
+    public String handleGameMessage(@DestinationVariable String gameId, String message) throws OpenAIException {
+        OpenAIResponse response = openAIService.generateResponse(message);
+        return response.getMessageAtIndex(0);
     }
 }

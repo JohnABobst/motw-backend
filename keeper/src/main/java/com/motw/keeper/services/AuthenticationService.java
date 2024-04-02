@@ -1,5 +1,6 @@
 package com.motw.keeper.services;
 
+import com.motw.keeper.services.exceptions.AuthenticationException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,20 +25,22 @@ public class AuthenticationService {
     private WebClient.Builder webClientBuilder;
 
     public ResponseEntity<?> validateToken(String authorizationHeader) {
-        System.out.println(authorizationHeader);
+        try {
+            return webClientBuilder.build()
+                    .get()
+                    .uri(authServiceUrl)
+                    .header(HttpHeaders.AUTHORIZATION, authorizationHeader)
+                    .retrieve()
+                    .toBodilessEntity()
+                    .onErrorResume(throwable -> {
+                        System.out.println(throwable.getMessage());
+                        return Mono.just(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+                    })
+                    .block();
+        } catch (Exception e) {
+            throw new AuthenticationException("Authentication failed", e);
+        }
 
-        return webClientBuilder.build()
-                .get()
-                .uri(authServiceUrl)
-                .header(HttpHeaders.AUTHORIZATION, authorizationHeader)
-                .retrieve()
-                .toBodilessEntity()
-                .onErrorResume(throwable -> {
-                    System.out.println(throwable.getMessage());
-                    return Mono.just(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
-                })
-                .block();
+
     }
-
-
 }
